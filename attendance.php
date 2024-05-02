@@ -208,7 +208,8 @@ require_once('DBConnection.php');
         var _s = String(currentdate.getSeconds()).padStart(2, '0');
         $('#time_display').text(_h + ':' +_mm+':'+_s+' '+_a);
         // $('#date_time').val(_Y+'-'+String(currentdate.getMonth()+1).padStart(2, '0')+'-'+_d+'')
-        $('#date_time').val(_Y+'-'+String(currentdate.getMonth()+1).padStart(2, '0')+'-'+String(currentdate.getDate()).padStart(2, '0')+'');
+        $('#date_time').val(_Y+'-'+String(currentdate.getMonth()+1).padStart(2, '0')+'-'+String(currentdate.getDate()).padStart(2,'0')+' '+_H+':'+_mm+':'+_s)
+        // $('#date_time').val(_Y+'-'+String(currentdate.getMonth()+1).padStart(2, '0')+'-'+String(currentdate.getDate()).padStart(2, '0')+'-'+'');
     }
     $(function(){
         setInterval(() => {
