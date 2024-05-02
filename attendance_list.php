@@ -10,16 +10,17 @@
         <table class="table table-bordered table-hover" id="att-list">
             <colgroup>
                 <col width="5%">
-                <col width="45%">
-                <col width="25%">
-                <col width="25%">
+                <col width="20%">
+                <col width="20%">
+                <col width="40%">
             </colgroup>
             <thead>
                 <tr>
                     <th class="p-0 text-center">#</th>
+                    <th class="p-0 text-center">Attendance Date</th>
+                    <th class="p-0 text-center">Attendance Time</th>
                     <th class="p-0 text-center">Employee</th>
                     <th class="p-0 text-center">Attendance Type</th>
-                    <th class="p-0 text-center">Attendance DateTime</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,8 @@
                 ?>
                 <tr>
                     <td class="align-middle py-0 px-1 text-center"><?php echo $i++; ?></td>
+                    <td class="align-middle py-0 px-1 text-center"><?php echo date("Y M d",strtotime($row['date_created']))  ?></td>
+                    <td class="align-middle py-0 px-1 text-center"><?php echo date("h:i A",strtotime($row['date_created']))  ?></td>
                     <td class="align-middle py-0 px-1">
                         <p class="m-0">
                             <small><b>Employee Code:</b> <?php echo $row['employee_code'] ?></small><br>
@@ -45,7 +48,7 @@
                     <td class="align-middle py-0 px-1 text-center">
                         <span class="badge bg-<?php echo $bg ?>"><?php echo $row['tname'] ?></span>
                     </td>
-                    <td class="align-middle py-0 px-1 text-end"><?php echo date("M d, Y h:i A",strtotime($row['date_created']))  ?></td>
+                   
                 </tr>
                 <?php endwhile; ?>
             </tbody>
