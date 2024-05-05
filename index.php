@@ -19,10 +19,17 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="DataTables/datatables.min.css">
-    <script src="DataTables/datatables.min.js"></script>
+    <!-- <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <script src="DataTables/datatables.min.js"></script> -->
     <script src="Font-Awesome-master/js/all.min.js"></script>
     <script src="js/script.js"></script>
+
+
+
+    <!-- <link rel="stylesheet" href="DataTable/assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="DataTable/assets/css/datatables.min.css">
+    <!-- <link rel="stylesheet" href="DataTable/assets/css/style.css"> -->
+
     <style>
         html,body{
             height:100%;
@@ -170,5 +177,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         </div>
         </div>
     </div>
+
+
+    <!-- <script src="DataTable/assets/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="DataTable/assets/js/jquery-3.6.0.min.js"></script> -->
+    <script src="DataTable/assets/js/datatables.min.js"></script>
+    <script src="DataTable/assets/js/pdfmake.min.js"></script>
+    <script src="DataTable/assets/js/vfs_fonts.js"></script>
+    <script src="DataTable/assets/js/custom.js"></script>
+
 </body>
 </html>
