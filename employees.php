@@ -8,24 +8,15 @@
     </div>
     <div class="card-body">
         <table class="table table-hover table-striped table-bordered">
-            <colgroup>
-                <col width="5%">
-                <col width="15%">
-                <col width="20%">
-                <col width="20%">
-                <col width="20%">
-                <col width="10%">
-                <col width="10%">
-            </colgroup>
             <thead>
                 <tr>
-                    <th class="text-center p-0">#</th>
-                    <th class="text-center p-0">Employee Code</th>
-                    <th class="text-center p-0">Name</th>
-                    <th class="text-center p-0">Department/Designation</th>
-                    <th class="text-center p-0">Info</th>
-                    <th class="text-center p-0">Status</th>
-                    <th class="text-center p-0">Action</th>
+                    <th>#</th>
+                    <th>Employee Code</th>
+                    <th>Name</th>
+                    <th>Department/Designation</th>
+                    <th>Info</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

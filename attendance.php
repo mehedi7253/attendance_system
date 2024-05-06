@@ -119,10 +119,9 @@ require_once('DBConnection.php');
                         <div class="overflow-auto" style="height:67vh">
                             <ul class="list-group">
                                 <?php
-                                $date=date_create("2024-05-01");
-                                date_add($date,date_interval_create_from_date_string("1 days"));
-                                $today = date_format($date,"Y-m-d");
-                                // echo $today;
+                            
+                                $today = date("Y-m-d");
+                                echo $today;
                                 $att_qry = $conn->query("SELECT a.*,t.name as tname,(e.lastname || ', ' || e.firstname || ' ' || e.middlename) as `fullname` FROM `attendance_list` a inner join employee_list e on a.employee_id = e.employee_id inner join att_type_list t on a.att_type_id = t.att_type_id where date(a.date_created) = '".$today."' ORDER BY strftime('%s', a.date_created) desc");
                                 while($row = $att_qry->fetchArray()):
                                     $bg = "primary";
