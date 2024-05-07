@@ -95,6 +95,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                <?php if($_SESSION['type'] == 1): ?>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'home')? 'active' : '' ?>" aria-current="page" href="./">Home</a>
                     </li>
@@ -107,14 +108,27 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                     <li class="nav-item">
                         <a class="nav-link " href="./attendance.php" target="_blank">Attendance</a>
                     </li>
-                    <?php if($_SESSION['type'] == 1): ?>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'users')? 'active' : '' ?>" aria-current="page" href="./?page=users">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./?page=maintenance">Maintenance</a>
                     </li>
-                    <?php endif; ?>
+
+                    <?php elseif($_SESSION['type'] == 2): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($page == 'users')? 'active' : '' ?>" aria-current="page" href="./?page=users">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./?page=maintenance">Maintenance</a>
+                    </li>
+
+                    <?php elseif($_SESSION['type'] == 3): ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($page == 'home')? 'active' : '' ?>" aria-current="page" href="./">Home</a>
+                        </li>
+                    <?php endif ?>
+
                     
                 </ul>
             </div>

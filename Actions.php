@@ -291,19 +291,16 @@ Class Actions extends DBConnection{
             } 
             @$save = $this->query($sql);
             $last_id= $this->lastInsertRowID();
-            
+            @$user_data = $this->query("SELECT * FROM `employee_list` where `employee_id` = '{$last_id}'")->fetchArray();
+
             if($save){
-                
                 $resp['status'] = 'success';
-                if(empty($id)){
+                $this->query("INSERT INTO `user_list` (`user_id`, `fullname`, `username`,`password`, `type`) values ('$last_id', '$user_data[firstname]', '$user_data[email]', '$user_data[password]', '3')");
+                if(empty($id))
                     $resp['msg'] = 'Employee Successfully added.';
-                    $user_data = $this->query("SELECT * FROM employee_list where employee_id = $last_id");
-                    foreach($user_data as $user){
-                        $this->query("INSERT INTO `user_list` ('user_id', 'fullname', 'username','password', 'type') values ('$last_id','$user[firstname]', '$user[email]', '$user[password]', '3')");
-                    }   
-                }
                 else
                 $resp['msg'] = 'Employee Successfully updated.';
+
             }else{
                 $resp['status'] = 'failed';
                 $resp['msg'] = 'An error occured. Error: '.$this->lastErrorMsg();

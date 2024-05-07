@@ -99,7 +99,6 @@
             data:{id:$id},
             dataType:'JSON',
             error:err=>{
-                consolre.log(err)
                 alert("An error occurred.")
                 $('#confirm_modal button').attr('disabled',false)
             },
