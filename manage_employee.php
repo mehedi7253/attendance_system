@@ -77,6 +77,11 @@ $qry = $conn->query("SELECT * FROM `employee_list` where employee_id = '{$_GET['
                             <option value="0" <?php echo (isset($status) && $status == 0 ) ? 'selected' : '' ?>>Inactive</option>
                         </select>
                     </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="status" class="control-label">Password</label>
+                    <input type="password" name="password" id="password" required class="form-control form-control-sm rounded-0">
                 </div>
             </div>
         </div>

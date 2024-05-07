@@ -268,11 +268,17 @@ Class Actions extends DBConnection{
                 if(!in_array($k,array('id'))){
                     if(empty($id)){
                         $columns[] = "`{$k}`"; 
-                        $values[] = "'{$v}'"; 
+                        $values[] = "'{$v}'";
                     }else{
                         if(!empty($data)) $data .= ", ";
                         $data .= " `{$k}` = '{$v}'";
                     }
+
+                    if(empty($id)){
+                        $columns[] = 'password';
+                        $values[] = "'".md5($password)."'";
+                    }
+                    
                 }
             }
             if(isset($columns) && isset($values)){
@@ -284,10 +290,18 @@ Class Actions extends DBConnection{
                 $sql = "UPDATE `employee_list` set {$data} where employee_id = '{$id}'";
             } 
             @$save = $this->query($sql);
+            $last_id= $this->lastInsertRowID();
+            
             if($save){
+                
                 $resp['status'] = 'success';
-                if(empty($id))
-                $resp['msg'] = 'Employee Successfully added.';
+                if(empty($id)){
+                    $resp['msg'] = 'Employee Successfully added.';
+                    $user_data = $this->query("SELECT * FROM employee_list where employee_id = $last_id");
+                    foreach($user_data as $user){
+                        $this->query("INSERT INTO `user_list` ('user_id', 'fullname', 'username','password', 'type') values ('$last_id','$user[firstname]', '$user[email]', '$user[password]', '3')");
+                    }   
+                }
                 else
                 $resp['msg'] = 'Employee Successfully updated.';
             }else{

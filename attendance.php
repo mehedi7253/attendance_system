@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_id'])){
+    header("Location:./login.php");
+    exit;
+}
 require_once('DBConnection.php');
 ?>
 <!DOCTYPE html>
@@ -90,6 +94,9 @@ require_once('DBConnection.php');
                     <div class="w-100">
                         <div class="card text-dark col-sm-10 offset-sm-1 align-middle h-auto">
                             <div class="card-body">
+                                <?php
+                                    echo $_SESSION['user_id']
+                                ?>
                                 <center><small>Please Enter your Employee Code</small></center>
                                 <div class="form-group">
                                     <center><small id="msg"></small></center>

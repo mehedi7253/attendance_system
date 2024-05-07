@@ -54,6 +54,7 @@ class DBConnection extends SQLite3
             `designation_id` INTEGER NULL,
             `contact` TEXT NOT NULL,
             `email` TEXT NOT NULL,
+            `password` TEXT NULL,
             `status` INTEGER NOT NULL DEFAULT 1,
             `date_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             `date_updated` TIMESTAMP NULL,
