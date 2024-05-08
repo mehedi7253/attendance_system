@@ -34,7 +34,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <form action="" id="login-form">
                     <center><small>Please enter your credentials.</small></center>
                     <div class="form-group">
-                        <label for="username" class="control-label">Employee Code</label>
+                        <label for="username" class="control-label">Login & password</label>
                         <input type="text" id="username" autofocus name="username" class="form-control form-control-sm rounded-0" required>
                     </div>
                     <div class="form-group">
@@ -42,7 +42,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                         <input type="password" id="password" name="password" class="form-control form-control-sm rounded-0" required>
                     </div>
                     <div class="form-group d-flex w-100 justify-content-between">
-                        <a href="./attendance.php">Go to Attendance Portal</a>
+                        <!-- <a href="./attendance.php">Go to Attendance Portal</a> -->
                         <button class="btn btn-sm btn-primary rounded-0 my-1">Login</button>
                     </div>
                 </form>
