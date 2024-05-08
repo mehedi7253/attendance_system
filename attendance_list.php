@@ -13,7 +13,7 @@
             <?php
                 if (isset($_POST['search'])) {
                     $searchKey = $_POST['src'];
-                    $search = $conn->query("SELECT * FROM attendance_list WHERE strftime('%m', date_created) = '$searchKey' LIMIT 1");
+                    $search = $conn->query("SELECT * FROM attendance_list WHERE strftime('%m', date_created) = '$searchKey' LIMIT 1")->fetchArray();
                 }
             ?>
 
@@ -40,16 +40,22 @@
                 </form>
             </div>
             <div class="col-md-6">
-            <?php
-                if (isset($_POST['search'])== true)
-                while ($rows = $search->fetchArray())
-                {?>
-                    <a href="delete.php?attendance_data=<?php echo date('m', strtotime($rows['date_created']));?>" class="btn btn-danger" onclick="return confirm('Are You Sure To Delete..!! Once you delete, you cant recover data again..')"><i class="fa fa-trash"></i> Delete</a>
-                <?php }?>
+                <?php
+                    if (isset($_POST['search'])== true)
+                    if($search > 0){?>
+                        <a href="delete.php?attendance_data=<?php echo date('m', strtotime($search['date_created']));?>" class="btn btn-danger" onclick="return confirm('Are You Sure To Delete..!! Once you delete, you cant recover data again..')"><i class="fa fa-trash"></i> Delete</a>
+                    <?php }else{
+                        echo "<p class='text-danger'>No Data Found!</p>";
+                    }
+                ?>
+           
             </div>
         </div>
         
     </div>
+
+
+
         <div class="table-responsive mt-5">
             <table class="table table-bordered table-hover table-striped" id="example">
                 <thead>
@@ -66,6 +72,7 @@
                         $att_qry = $conn->query("SELECT attendance_list.att_type_id as Type, attendance_list.date_created as attendanceDate, employee_list.firstname as FirstName, employee_list.lastname as LastName, employee_list.email as Email, employee_list.employee_code as EmployeeCode,  att_type_list.name FROM attendance_list, employee_list, att_type_list WHERE attendance_list.employee_id = employee_list.employee_id AND attendance_list.att_type_id = att_type_list.att_type_id AND strftime('%m', attendance_list.date_created) = '$today' order By attendance_list.date_created ASC");
                     ?>
                 <tbody>
+              
                     <?php $i = 1;
                     while($row = $att_qry->fetchArray()) {?>
                     <tr class="text-center">

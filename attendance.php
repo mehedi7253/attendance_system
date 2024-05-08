@@ -94,9 +94,6 @@ require_once('DBConnection.php');
                     <div class="w-100">
                         <div class="card text-dark col-sm-10 offset-sm-1 align-middle h-auto">
                             <div class="card-body">
-                                <?php
-                                    echo $_SESSION['user_id']
-                                ?>
                                 <center><small>Please Enter your Employee Code</small></center>
                                 <div class="form-group">
                                     <center><small id="msg"></small></center>
@@ -115,7 +112,7 @@ require_once('DBConnection.php');
                                 </div>
                             </div>
                         </div>
-                    <center><a href="./admin.php" class="mt-4">Go to Admin Side</a></center>
+                    <!-- <center><a href="./admin.php" class="mt-4">Go to Admin Side</a></center> -->
                     </div>
                 </div>
             </div>
@@ -128,7 +125,7 @@ require_once('DBConnection.php');
                                 <?php
                             
                                 $today = date("Y-m-d");
-                                echo $today;
+                                // echo $today;
                                 $att_qry = $conn->query("SELECT a.*,t.name as tname,(e.lastname || ', ' || e.firstname || ' ' || e.middlename) as `fullname` FROM `attendance_list` a inner join employee_list e on a.employee_id = e.employee_id inner join att_type_list t on a.att_type_id = t.att_type_id where date(a.date_created) = '".$today."' ORDER BY strftime('%s', a.date_created) desc");
                                 while($row = $att_qry->fetchArray()):
                                     $bg = "primary";
