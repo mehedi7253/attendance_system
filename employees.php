@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <?php 
-                $sql = "SELECT e.*,(e.lastname || ', ' || e.firstname || ' ' || e.middlename) as `name`,d.name as dept, dd.name as desg FROM `employee_list`e INNER JOIN `department_list` d on e.department_id = d.department_id inner join `designation_list` dd on e.designation_id = dd.designation_id  order by `name` asc";
+                $sql = "SELECT e.*,(e.firstname || ' ' || e.middlename || ' ' || e.lastname) as `name`,d.name as dept, dd.name as desg FROM `employee_list`e INNER JOIN `department_list` d on e.department_id = d.department_id inner join `designation_list` dd on e.designation_id = dd.designation_id  order by `name` asc";
                 $qry = $conn->query($sql);
                 $i = 1;
                     while($row = $qry->fetchArray()):

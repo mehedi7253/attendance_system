@@ -53,23 +53,21 @@
         </div>
         
     </div>
-
-
-
         <div class="table-responsive mt-5">
             <table class="table table-bordered table-hover table-striped" id="example">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Employee</th>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
                         <th>Attendance Date</th>
                         <th>Attendance Time</th>
                         <th>Attendance Type</th>
                     </tr>
                 </thead>
                     <?php 
-                        $today = @date("m");
-                        $att_qry = $conn->query("SELECT attendance_list.att_type_id as Type, attendance_list.date_created as attendanceDate, employee_list.firstname as FirstName, employee_list.lastname as LastName, employee_list.email as Email, employee_list.employee_code as EmployeeCode,  att_type_list.name FROM attendance_list, employee_list, att_type_list WHERE attendance_list.employee_id = employee_list.employee_id AND attendance_list.att_type_id = att_type_list.att_type_id AND strftime('%m', attendance_list.date_created) = '$today' order By attendance_list.date_created ASC");
+                        $month = @date("m");
+                        $att_qry = $conn->query("SELECT attendance_list.att_type_id as Type, attendance_list.date_created as attendanceDate, employee_list.firstname as FirstName, employee_list.lastname as LastName, employee_list.email as Email, employee_list.employee_code as EmployeeCode,  att_type_list.name FROM attendance_list, employee_list, att_type_list WHERE attendance_list.employee_id = employee_list.employee_id AND attendance_list.att_type_id = att_type_list.att_type_id AND strftime('%m', attendance_list.date_created) = '$month' order By attendance_list.date_created ASC");
                     ?>
                 <tbody>
               
@@ -77,11 +75,8 @@
                     while($row = $att_qry->fetchArray()) {?>
                     <tr class="text-center">
                        <td><?php echo $i++; ?></td>
-                       <td>
-                            <p class="m-0">
-                                <small><b>Employee Code:</b> <?php echo $row['EmployeeCode'] ?></small><br>
-                                <small><b>Name:</b> <?php echo $row['FirstName'] ?> <?php echo $row['LastName'] ?></small>
-                            </p>
+                       <td><?php echo $row['EmployeeCode']?></td>
+                       <td class="text-capitalize"><?php echo $row['FirstName'] ?> <?php echo $row['LastName'] ?> </td>
                        <td><?php echo date("Y M d",strtotime($row['attendanceDate'])) ?></td>
                        <td><?php echo date("h:i A",strtotime($row['attendanceDate'])) ?></td>
                        <td>

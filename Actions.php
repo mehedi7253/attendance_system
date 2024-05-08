@@ -296,11 +296,11 @@ Class Actions extends DBConnection{
                 $resp['status'] = 'success';
                 if(empty($id)){
                     $resp['msg'] = 'Employee Successfully added.';
-                    $this->query("INSERT INTO `user_list` (`user_id`, `fullname`, `username`,`password`, `status`, `type`) values ('$last_id', '$user_data[firstname]', '$user_data[email]', '$user_data[password]', '$user_data[status]', '3')");
+                    $this->query("INSERT INTO `user_list` (`user_id`, `fullname`, `username`,`password`, `status`, `type`) values ('$last_id', '$user_data[firstname]', '$user_data[employee_code]', '$user_data[password]', '$user_data[status]', '3')");
                 }else{
                     // '".md5($password)."'
                     $resp['msg'] = 'Employee Successfully updated.';
-                    $this->query("UPDATE `user_list` set `fullname` = '$user[firstname]', 'username' = '$user[email]', `password` = '".md5($password)."', `status` = '$user[status]' where `user_id` = '{$id}'");
+                    $this->query("UPDATE `user_list` set `fullname` = '$user[firstname]', 'username' = '$user[employee_code]', `password` = '".md5($password)."', `status` = '$user[status]' where `user_id` = '{$id}'");
                 }
             }else{
                 $resp['status'] = 'failed';

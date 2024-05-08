@@ -34,7 +34,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <form action="" id="login-form">
                     <center><small>Please enter your credentials.</small></center>
                     <div class="form-group">
-                        <label for="username" class="control-label">Username</label>
+                        <label for="username" class="control-label">Employee Code</label>
                         <input type="text" id="username" autofocus name="username" class="form-control form-control-sm rounded-0" required>
                     </div>
                     <div class="form-group">

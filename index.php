@@ -35,15 +35,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
             height:100%;
             width:100%;
         }
-        main{
-            height:100%;
-            display:flex;
-            flex-flow:column;
-        }
-        #page-container{
-            flex: 1 1 auto; 
-            overflow:auto;
-        }
+       
+        
         #topNavBar{
             flex: 0 1 auto; 
         }
