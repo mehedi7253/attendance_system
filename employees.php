@@ -57,9 +57,11 @@
                             Action
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item view_data" data-id = '<?php echo $row['employee_id'] ?>' href="javascript:void(0)">View</a></li>
-                            <li><a class="dropdown-item edit_data" data-id = '<?php echo $row['employee_id'] ?>' href="javascript:void(0)">Edit</a></li>
-                            <li><a class="dropdown-item delete_data" data-id = '<?php echo $row['employee_id'] ?>' data-name = '<?php echo $row['employee_code']." - ".$row['name'] ?>' href="javascript:void(0)">Delete</a></li>
+                                <li><a class="dropdown-item view_data" data-id = '<?php echo $row['employee_id'] ?>' href="javascript:void(0)">View</a></li>
+                                <li><a class="dropdown-item edit_data" data-id = '<?php echo $row['employee_id'] ?>' href="javascript:void(0)">Edit</a></li>
+                                <li>
+                                    <a class="dropdown-item delete_data" href="delete.php?delete_employee=<?php echo $row['employee_id'] ?>" onclick="return confirm('Are You Sure To Delete..!! Once you delete, you cant recover data again..')">Delete</a>
+                                </li>
                             </ul>
                         </div>
                     </th>
@@ -81,9 +83,9 @@
         $('.view_data').click(function(){
             uni_modal('Employee Details',"view_employee.php?id="+$(this).attr('data-id'),'mid-large')
         })
-        $('.delete_data').click(function(){
-            _conf("Are you sure to delete <b>"+$(this).attr('data-name')+"</b> from list?",'delete_data',[$(this).attr('data-id')])
-        })
+        // $('.delete_data').click(function(){
+        //     _conf("Are you sure to delete <b>"+$(this).attr('data-name')+"</b> from list?",'delete_data',[$(this).attr('data-id')])
+        // })
         $('table td,table th').addClass('align-middle')
         $('table').dataTable({
             columnDefs: [

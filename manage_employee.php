@@ -26,7 +26,7 @@ $qry = $conn->query("SELECT * FROM `employee_list` where employee_id = '{$_GET['
                         <input type="text" name="middlename" id="middlename" required class="form-control form-control-sm rounded-0" placeholder="(optional)" value="<?php echo isset($middlename) ? $middlename : '' ?>">
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="control-label">Name</label>
+                        <label for="lastname" class="control-label">Last Name</label>
                         <input type="text" name="lastname" id="lastname" required class="form-control form-control-sm rounded-0" value="<?php echo isset($lastname) ? $lastname : '' ?>">
                     </div>
                     <div class="form-group">

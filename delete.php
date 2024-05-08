@@ -11,4 +11,15 @@
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
+
+    if (isset($_GET['delete_employee']))
+    {
+        $employee = $_GET['delete_employee'];
+
+        $conn->query("DELETE FROM employee_list WHERE employee_id = '$employee'");
+        $conn->query("DELETE FROM user_list WHERE user_id = '$employee'");
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
 ?>

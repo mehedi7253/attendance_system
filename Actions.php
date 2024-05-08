@@ -214,8 +214,6 @@ Class Actions extends DBConnection{
         if(isset($cols) && isset($values)){
             $data = "(".implode(',',$cols).") VALUES (".implode(',',$values).")";
         }
-        
-
        
         @$check= $this->query("SELECT count(user_id) as `count` FROM user_list where `username` = '{$username}' ".($id > 0 ? " and user_id != '{$id}' " : ""))->fetchArray()['count'];
         if(@$check> 0){
@@ -292,15 +290,18 @@ Class Actions extends DBConnection{
             @$save = $this->query($sql);
             $last_id= $this->lastInsertRowID();
             @$user_data = $this->query("SELECT * FROM `employee_list` where `employee_id` = '{$last_id}'")->fetchArray();
+            @$user = $this->query("SELECT * FROM `employee_list` WHERE `employee_id` = '{$id}'")->fetchArray();
 
             if($save){
                 $resp['status'] = 'success';
-                $this->query("INSERT INTO `user_list` (`user_id`, `fullname`, `username`,`password`, `type`) values ('$last_id', '$user_data[firstname]', '$user_data[email]', '$user_data[password]', '3')");
-                if(empty($id))
+                if(empty($id)){
                     $resp['msg'] = 'Employee Successfully added.';
-                else
-                $resp['msg'] = 'Employee Successfully updated.';
-
+                    $this->query("INSERT INTO `user_list` (`user_id`, `fullname`, `username`,`password`, `type`) values ('$last_id', '$user_data[firstname]', '$user_data[email]', '$user_data[password]', '3')");
+                }else{
+                    // '".md5($password)."'
+                    $resp['msg'] = 'Employee Successfully updated.';
+                    $this->query("UPDATE `user_list` set `fullname` = '$user[firstname]', 'username' = '$user[email]', `password` = '".md5($password)."' where `user_id` = '{$id}'");
+                }
             }else{
                 $resp['status'] = 'failed';
                 $resp['msg'] = 'An error occured. Error: '.$this->lastErrorMsg();

@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 <?php 
-                $sql = "SELECT * FROM `user_list` where user_id != 1 order by `fullname` asc";
+                $sql = "SELECT * FROM `user_list` where type NOT IN (3,1) order by `fullname` asc";
                 $qry = $conn->query($sql);
                 $i = 1;
                     while($row = $qry->fetchArray()):

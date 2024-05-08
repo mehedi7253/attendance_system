@@ -50,9 +50,6 @@
         </div>
         
     </div>
-
-
-
         <div class="table-responsive mt-5">
             <table class="table table-bordered table-hover table-striped" id="example">
                 <thead>
@@ -66,7 +63,7 @@
                 </thead>
                     <?php 
                         $today = @date("m");
-                        $att_qry = $conn->query("SELECT attendance_list.att_type_id as Type, attendance_list.date_created as attendanceDate, employee_list.firstname as FirstName, employee_list.lastname as LastName, employee_list.email as Email, employee_list.employee_code as EmployeeCode,  att_type_list.name FROM attendance_list, employee_list, att_type_list WHERE attendance_list.employee_id = employee_list.employee_id AND attendance_list.att_type_id = att_type_list.att_type_id AND strftime('%m', attendance_list.date_created) = 'z$today' order By attendance_list.date_created ASC");
+                        $att_qry = $conn->query("SELECT attendance_list.att_type_id as Type, attendance_list.date_created as attendanceDate, employee_list.firstname as FirstName, employee_list.lastname as LastName, employee_list.email as Email, employee_list.employee_code as EmployeeCode,  att_type_list.name FROM attendance_list, employee_list, att_type_list WHERE attendance_list.employee_id = employee_list.employee_id AND attendance_list.att_type_id = att_type_list.att_type_id AND strftime('%m', attendance_list.date_created) = '$today' order By attendance_list.date_created ASC");
                     ?>
                 <tbody>
                     <?php $i = 1;
