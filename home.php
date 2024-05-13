@@ -8,6 +8,9 @@
             <div class="w-100 h-25 d-flex  align-items-center">
                 <h2 class="text-center w-100 fs-1"><b>Simple Attendance System</b></h2>
             </div>
+            <div class="col-md-1 col-sm-12 mx-auto mt-3">
+                    <a class="btn btn-block btn-danger" href="Actions.php?a=logout">Logout</a>
+            </div>
             <div class="w-100 row flex-grow-1 mt-5">
                 <div class="col-md-6 d-flex flex-column align-items-center h-100">
                     <div class="w-100 h-25 d-flex align-items-center">
