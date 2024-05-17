@@ -86,9 +86,9 @@
                                 elseif($row['Type'] == '2')
                                     echo "<button class='btn btn-sm btn-danger'>Time Out</button>";
                                 elseif($row['Type'] == '3')
-                                    echo "<button class='btn btn-sm btn-success'>OT In</button>";
+                                    echo "<button class='btn btn-sm btn-success'>FS In</button>";
                                 elseif($row['Type'] == '4')
-                                    echo "<button class='btn btn-sm btn-danger'>Ot Out</button>";
+                                    echo "<button class='btn btn-sm btn-danger'>FS Out</button>";
                             ?>
                         </td>
                     </tr>

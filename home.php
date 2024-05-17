@@ -36,15 +36,33 @@
                                         <?php }?>
                                     </div>
                                     <div class="form-group d-flex justify-content-between mt-3 mb-1">
-                                        <?php 
-                                        $qry = $conn->query("SELECT * FROM `att_type_list` order by att_type_id asc");
-                                        while($row= $qry->fetchArray()):
-                                            $bg = 'primary';
-                                            if(in_array($row['att_type_id'],array(2,4)))
-                                            $bg = 'danger';
+                                        <?php
+                                            $today = date("Y-m-d");
+                                            $check_data = $conn->query("SELECT employee_id, att_type_id, date_created FROM attendance_list WHERE employee_id = '$_SESSION[user_id]' AND date(date_created) = '$today'")->fetchArray();
+                                            
+                                            // echo $check_data['employee_id'];
+
+                                            if($check_data){
+                                                    if($check_data['att_type_id'] == 1 || $check_data['att_type_id'] == 2){
+                                                    echo "<button class='att_btn btn btn-sm btn-info rounded-0 py-0' type='button' data-id='1'>Time In</button>";
+                                                    echo "<button class='att_btn btn btn-sm btn-danger rounded-0 py-0' type='button' data-id='2'>Time Out</button>";
+    
+                                                    echo "<button class='att_btn btn btn-sm btn-info rounded-0 py-0' type='button' data-id='3' disabled>FS In</button>";
+                                                    echo "<button class='att_btn btn btn-sm btn-danger rounded-0 py-0' type='button' data-id='4' disabled>FS Out</button>";
+                                                }elseif($check_data['att_type_id'] == 3 || $check_data['att_type_id'] == 4){
+                                                    echo "<button class='att_btn btn btn-sm btn-info rounded-0 py-0' type='button' data-id='1' disabled>Time In</button>";
+                                                    echo "<button class='att_btn btn btn-sm btn-danger rounded-0 py-0' type='button' data-id='2' disabled>Time Out</button>";
+    
+                                                    echo "<button class='att_btn btn btn-sm btn-info rounded-0 py-0' type='button' data-id='3'>FS In</button>";
+                                                    echo "<button class='att_btn btn btn-sm btn-danger rounded-0 py-0' type='button' data-id='4'>FS Out</button>";
+                                                }
+                                            }else{?>
+                                                <button class="att_btn btn btn-sm btn-info rounded-0 py-0" type="button" data-id="1">Time In</button>
+                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="2">Time Out</button>
+                                                <button class="att_btn btn btn-sm btn-info rounded-0 py-0" type="button" data-id="3">FS In</button>
+                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="4">FS Out</button>
+                                            <?php }
                                         ?>
-                                        <button class="att_btn btn btn-sm btn-<?php echo $bg ?> rounded-0 py-0" type="button" data-id="<?php echo $row['att_type_id'] ?>"><?php echo $row['name'] ?></button>
-                                        <?php endwhile; ?>
                                     </div>
                                 </div>
                             </div>

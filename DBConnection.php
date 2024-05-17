@@ -88,8 +88,8 @@ class DBConnection extends SQLite3
         $this->exec("INSERT or IGNORE INTO `att_type_list` VALUES 
         (1,'Time In',1, CURRENT_TIMESTAMP),
         (2,'Time Out',1, CURRENT_TIMESTAMP),
-        (3,'OT In',1, CURRENT_TIMESTAMP),
-        (4,'OT Out',1, CURRENT_TIMESTAMP)");
+        (3,'FS In',1, CURRENT_TIMESTAMP),
+        (4,'FS Out',1, CURRENT_TIMESTAMP)");
     }
     function __destruct()
     {
