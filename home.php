@@ -58,9 +58,9 @@
                                                 }
                                             }else{?>
                                                 <button class="att_btn btn btn-sm btn-info rounded-0 py-0" type="button" data-id="1">Time In</button>
-                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="2">Time Out</button>
+                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="2" disabled>Time Out</button>
                                                 <button class="att_btn btn btn-sm btn-info rounded-0 py-0" type="button" data-id="3">FS In</button>
-                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="4">FS Out</button>
+                                                <button class="att_btn btn btn-sm btn-danger rounded-0 py-0" type="button" data-id="4" disabled>FS Out</button>
                                             <?php }
                                         ?>
                                     </div>
