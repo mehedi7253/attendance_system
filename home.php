@@ -168,7 +168,10 @@
                         msg_h.addClass('text-danger')
                         msg_h.text(resp.msg)
                     }
-                    $('.att_btn').attr('disabled',false)
+                    $('.att_btn').attr('disabled',true)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 2000);
                 }
             })
         })
